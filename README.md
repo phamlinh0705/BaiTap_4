@@ -45,7 +45,9 @@ Bảng TKB
 4. Truy vấn SQL để ra thông tin gồm 4 cột: họ tên gv, môn dạy, giờ vào lớp, giờ ra.
 ![image](https://github.com/user-attachments/assets/75f37ff7-8a17-4e86-8315-0c94c2741149)
 CODE lệnh truy vấn
+
 DECLARE @datetime1 DATETIME = '2025-03-17 15:30:00';
+
 DECLARE @datetime2 DATETIME = '2025-03-19 18:30:00';
 
 SELECT 
@@ -53,9 +55,13 @@ SELECT
     MH.TenMonHoc AS TenMonDay,
     TKB.GioVao,
     TKB.GioRa
+    
 FROM TKB
+
 JOIN GIAOVIEN GV ON TKB.MaGV = GV.MaGV
+
 JOIN MONHOC MH ON TKB.MaMH = MH.MaMH
+
 WHERE 
     (TKB.GioVao BETWEEN CAST(@datetime1 AS TIME) AND CAST(@datetime2 AS TIME)) 
     OR
